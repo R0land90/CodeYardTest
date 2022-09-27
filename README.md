@@ -4,6 +4,12 @@
     <a href="https://r0land90.github.io/CodeYardTest/"><strong>View Allure Report</strong></a>
     <br />
     <br />
+    <a href="https://trello.com/b/Zkm8yAOH/codeyardtesztfeladat"><strong>View Trello board</strong></a>
+    <br />
+    <br />
+    <a href="https://docs.google.com/spreadsheets/d/1Ieg9Bq51Fh0E_3t9WWxt707RaSS3_fi8/"><strong>View Test Manager file</strong></a>
+    <br />
+    <br />
 
 <HR>
 

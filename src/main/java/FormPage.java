@@ -6,7 +6,7 @@ public class FormPage extends PageBase {
     public FormPage(WebDriver drv){ super(drv);}
 
     //elements
-    final By lastNameField = By.id("input-11");
+    public By lastNameField = By.id("input-11");
     final By firstNameField = By.id("input-14");
     final By emailField = By.id("input-17");
     final By userNameField = By.id("input-20");

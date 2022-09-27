@@ -1,5 +1,6 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Allure;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -31,7 +32,11 @@ public class Test00Base {
         //driver.manage().window().maximize();
         driver.get("https://test.codeyard.eu/");
     }
-
+    @AfterEach
+    public void evidenceKiller(){
+        driver.manage().deleteAllCookies();
+        driver.quit();
+    }
 
     //METHODS
 

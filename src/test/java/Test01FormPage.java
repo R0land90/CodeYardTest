@@ -3,8 +3,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class Test01FormPage extends Test00Base {
@@ -346,6 +349,8 @@ public class Test01FormPage extends Test00Base {
 
         Thread.sleep(1000);
 
+        takeScreenShot("Az oldal nem maszkolja a Jelszó mezőt");
+
         //Maszkolás ellenőrzése
         //Az ellenőrzés alapja az input mező "type" attribútuma ami jelen esetben "password" kellene hogy legyen.
         String exceptedType = "password";
@@ -353,7 +358,65 @@ public class Test01FormPage extends Test00Base {
         Assertions.assertEquals(exceptedType,actualType);
     }
 
+    @Test
+    @Epic("Birth Date Field")
+    @Feature("Birth Date Validation")
+    @Story("Back to the Future")
+    @Description("Születési Dátum mező\n" +
+            "ez itt egy jövőmenő.")
+    @Severity(SeverityLevel.NORMAL)
+    @Tag("CYTC_40")
+    @Issue("BUG_21")
+    public void testBirthDateFutureMan() throws InterruptedException, IOException {
+            //PAGEFACTORY
+        FormPage formPage = (FormPage) PageFactory.Create("FormPage", driver);
+        Tools tools = (Tools) PageFactory.Create("Tools", driver);
 
+            //TEST
 
+        /*
+        Nem szép, de a kevés rendelkezésre álló időbe most ez fért bele :) Jelenlegi formájában is működik!
+        A helyes és stabil megoldás az lenne ha a tesztadatban szereplő dátumot String splitterrel feldarabolnám, tömbösíteném
+        majd az évre, hónapra, napra lebontott elemeket külön változókba tenném.
+        Ezután az adott változó nevét kikeresném a DOM-ból és a hozzátartozó DIV-et clickelném le.
+        A rendszer idejével összehasonlítanám az így kinyert dátumot és ha a rendszer időnél későbbi dátumot kapnék keresném
+        a hibaüzenetre vonatkozó piros színt a stíluslapból.
 
+        Alternatív megoldásként még az is opció lenne ha az adott mai dátumnál későbbi dátum nem kiválaszható.
+        Ez esetben még egyszerűbb lenne a teszt automatizálás, hisz csak a dátum kiválaszhatóságát kellene ellenőrizni.
+         */
+        driver.findElement(formPage.birthDayField).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//*[@id=\"app\"]/div[2]/div/div/div/div[1]/div/div/button")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//*[@id=\"app\"]/div[2]/div/div/div/div[1]/div/div/button")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//*[@id=\"app\"]/div[2]/div/div/div/ul/li[98]")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//*[@id=\"app\"]/div[2]/div/div/div/div[2]/table/tbody/tr[4]/td[1]/button")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//*[@id=\"app\"]/div[2]/div/div/div/div[2]/table/tbody/tr[4]/td[3]/button")).click();
+        Thread.sleep(1000);
+
+        tools.requiredDataFiller();
+
+        driver.findElement(formPage.nextButton).click();
+        Thread.sleep(1000);
+
+            //ASSERT
+
+        //Hibaüzenet megjelenésének ellenőrzése
+
+        if(driver.findElements(formPage.birthDayField).size()>0){
+            Boolean result = tools.isCssPresent(driver.findElement(formPage.birthDayField),"caret-color");
+            Boolean expectedErrorMessage = true;
+            Assertions.assertEquals(expectedErrorMessage,result);
+        }
+
+        takeScreenShot("Az oldal továbblépett és elfogadta a nem elfogadható dátumot");
+
+        //Oldal továbblépésének ellenőrzése
+        String expectedURL = "https://test.codeyard.eu/";
+        Assertions.assertEquals(expectedURL,driver.getCurrentUrl());
+    }
 }

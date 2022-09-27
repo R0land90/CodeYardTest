@@ -16,7 +16,7 @@ public class Tools extends PageBase{
 
     // Attribute tools
     public boolean isCssPresent(WebElement element, String cssvalue){
-        Boolean result = false;
+        boolean result = false;
         try{
             String value = element.getCssValue(cssvalue);
             if (!value.isBlank()){
@@ -32,6 +32,28 @@ public class Tools extends PageBase{
             driver.findElement(elements[i]).sendKeys(Keys.LEFT_CONTROL,"A");
             driver.findElement(elements[i]).sendKeys(readJsonObject(PageBase.fillerDataFilePath).getString(data[i]));
         }
+    }
+
+    public void requiredDataFiller() throws IOException {
+        FormPage formPage = (FormPage) PageFactory.Create("FormPage", driver);
+        Tools tools = (Tools) PageFactory.Create("Tools", driver);
+        By[] elements ={
+                formPage.firstNameField,
+                formPage.lastNameField,
+                formPage.emailField,
+                formPage.userNameField,
+                formPage.passwordField,
+                formPage.passwordRepeatField,
+                formPage.birthPlaceField};
+        String[] dataSelector = {
+                "fName",
+                "lName",
+                "email",
+                "uName",
+                "password",
+                "passwordRep",
+                "birthPlace"};
+        tools.dataFiller(elements,dataSelector);
     }
 
     // JSON object-file methods
