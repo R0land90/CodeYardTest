@@ -1,16 +1,13 @@
 import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
 
 import java.io.IOException;
 
 
-public class Test01LastName extends Test00Base {
+public class Test01FormPage extends Test00Base {
 
 
 
@@ -80,17 +77,22 @@ public class Test01LastName extends Test00Base {
 
         Thread.sleep(1000);
 
+
+
         //Hibaüzenet megjelenésének ellenőrzése
         if(driver.findElements(formPage.lastNameField).size()>0){
             Boolean result = tools.isCssPresent(driver.findElement(formPage.lastNameField),"caret-color");
             Boolean expectedErrorMessage = true;
             Assertions.assertEquals(expectedErrorMessage,result);
         }
+
+        takeScreenShot("Az oldal továbblépett és elfogadta a számot");
+
         //Oldal továbblépésének ellenőrzése
         String expectedURL = "https://test.codeyard.eu/";
         Assertions.assertEquals(expectedURL,driver.getCurrentUrl());
 
-        takeScreenShot("Az oldal továbblépett és elfogadta a számot");
+
     }
 
     @Test
@@ -142,11 +144,14 @@ public class Test01LastName extends Test00Base {
             Boolean expectedErrorMessage = true;
             Assertions.assertEquals(expectedErrorMessage,result);
         }
+
+        takeScreenShot("Az oldal továbblépett és elfogadta a specifikáltnál hosszabb karakterláncot");
+
         //Oldal továbblépésének ellenőrzése
         String expectedURL = "https://test.codeyard.eu/";
         Assertions.assertEquals(expectedURL,driver.getCurrentUrl());
 
-        takeScreenShot("Az oldal továbblépett és elfogadta a specifikáltnál hosszabb karakterláncot");
+
     }
 
     @Test
@@ -196,11 +201,159 @@ public class Test01LastName extends Test00Base {
             Boolean expectedErrorMessage = true;
             Assertions.assertEquals(expectedErrorMessage,result);
         }
+
+        takeScreenShot("Az oldal továbblépett és elfogadta a hibát tartalmazó tesztadatot");
+
         //Oldal továbblépésének ellenőrzése
         String expectedURL = "https://test.codeyard.eu/";
         Assertions.assertEquals(expectedURL,driver.getCurrentUrl());
 
-        takeScreenShot("Az oldal továbblépett és elfogadta a hibát tartalmazó tesztadatot");
+
     }
+
+    @Test
+    @Epic("Email Field")
+    @Feature("Email address validation")
+    @Story("Missing . char")
+    @Description("Az email címben . karakter validációja")
+    @Severity(SeverityLevel.CRITICAL)
+    @Tag("CYTC_22")
+    @Issue("BUG_11")
+    public void testEmailFieldMissingDot() throws IOException, InterruptedException {
+            //PAGEFACTORY
+        FormPage formPage = (FormPage) PageFactory.Create("FormPage", driver);
+        Tools tools = (Tools) PageFactory.Create("Tools", driver);
+
+            //TEST
+
+        String testData = "teszt@emailhu";
+
+        driver.findElement(formPage.emailField).sendKeys(testData);
+
+        By[] elements ={
+                formPage.lastNameField,
+                formPage.firstNameField,
+                formPage.userNameField,
+                formPage.passwordField,
+                formPage.passwordRepeatField,
+                formPage.birthPlaceField};
+        String[] dataSelector = {
+                "lName",
+                "fName",
+                "uName",
+                "password",
+                "passwordRep",
+                "birthPlace"};
+
+        tools.dataFiller(elements,dataSelector);
+        driver.findElement(formPage.nextButton).click();
+
+            //ASSERT
+
+        Thread.sleep(1000);
+
+        //Hibaüzenet megjelenésének ellenőrzése
+        if(driver.findElements(formPage.emailField).size()>0){
+            Boolean result = tools.isCssPresent(driver.findElement(formPage.emailField),"caret-color");
+            Boolean expectedErrorMessage = true;
+            Assertions.assertEquals(expectedErrorMessage,result);
+        }
+
+        takeScreenShot("Az oldal továbblépett és elfogadta a hibát tartalmazó tesztadatot");
+
+        //Oldal továbblépésének ellenőrzése
+        String expectedURL = "https://test.codeyard.eu/";
+        Assertions.assertEquals(expectedURL,driver.getCurrentUrl());
+    }
+
+    @Test
+    @Epic("Password Field")
+    @Feature("Password confirmation validation")
+    @Story("Different password")
+    @Description("Jelszó mező és a jelszó megerősítése mező különböző jelszavak elfogadásának validációja")
+    @Severity(SeverityLevel.CRITICAL)
+    @Tag("CYTC_36")
+    @Issue("BUG_18")
+    public void testPasswordFieldConfirmationDifferent() throws IOException, InterruptedException {
+            //PAGEFACTORY
+        FormPage formPage = (FormPage) PageFactory.Create("FormPage", driver);
+        Tools tools = (Tools) PageFactory.Create("Tools", driver);
+
+            //TEST
+
+        String testDataA = "qX98l432“‘`|/\\";
+        String testDataB = "qX98lBélaAHegyről";
+
+        driver.findElement(formPage.passwordField).sendKeys(testDataA);
+        driver.findElement(formPage.passwordRepeatField).sendKeys(testDataB);
+
+        By[] elements ={
+                formPage.lastNameField,
+                formPage.firstNameField,
+                formPage.emailField,
+                formPage.userNameField,
+                formPage.birthPlaceField};
+        String[] dataSelector = {
+                "lName",
+                "fName",
+                "email",
+                "uName",
+                "birthPlace"};
+
+        tools.dataFiller(elements,dataSelector);
+        driver.findElement(formPage.nextButton).click();
+
+            //ASSERT
+
+        Thread.sleep(1000);
+
+        //Hibaüzenet megjelenésének ellenőrzése
+        if(driver.findElements(formPage.passwordField).size()>0){
+            Boolean result = tools.isCssPresent(driver.findElement(formPage.passwordField),"caret-color");
+            Boolean expectedErrorMessage = true;
+            Assertions.assertEquals(expectedErrorMessage,result);
+        }
+
+        takeScreenShot("Az oldal továbblépett és elfogadta az egyámstól különböző jelszavakat");
+
+        //Oldal továbblépésének ellenőrzése
+        String expectedURL = "https://test.codeyard.eu/";
+        Assertions.assertEquals(expectedURL,driver.getCurrentUrl());
+    }
+
+    @Test
+    @Epic("Password Field")
+    @Feature("Password masking validation")
+    @Story("Password field masking")
+    @Description("Jelszó mező és a jelszó megerősítése mező maszkolása csillag karaktertípusokkal")
+    @Severity(SeverityLevel.CRITICAL)
+    @Tag("CYTC_37")
+    @Issue("BUG_19")
+    public void testPasswordFieldMasking() throws InterruptedException {
+            //PAGEFACTORY
+        FormPage formPage = (FormPage) PageFactory.Create("FormPage", driver);
+        Tools tools = (Tools) PageFactory.Create("Tools", driver);
+
+            //TEST
+
+        String testDataA = "qX98l432“‘`|/\\";
+        String testDataB = "qX98lBélaAHegyről";
+
+        driver.findElement(formPage.passwordField).sendKeys(testDataA);
+        driver.findElement(formPage.passwordRepeatField).sendKeys(testDataB);
+
+            //ASSERT
+
+        Thread.sleep(1000);
+
+        //Maszkolás ellenőrzése
+        //Az ellenőrzés alapja az input mező "type" attribútuma ami jelen esetben "password" kellene hogy legyen.
+        String exceptedType = "password";
+        String actualType = driver.findElement(formPage.passwordField).getAttribute("type");
+        Assertions.assertEquals(exceptedType,actualType);
+    }
+
+
+
 
 }
