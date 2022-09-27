@@ -20,6 +20,9 @@ Tartalmaz egy regisztrációs űrlapot és egy abból származtatott összefogla
 Az oldal szándékosan elrejtett hibákat tartalmaz, fő feladatom ezek megtalálása
 és dokumentálása különálló tesztmenedzser fájlba illetve Trello ticket rendszerbe.<br>
 &emsp;Jelen github repo az ehhez kapcsolódó dokumentumokat és tesztesetek teszt automatizált megoldásait tartalmazza.
+<br />
+&emsp;Összesen 9 teszt került automatizálásra.
+
 
 ### Built With
 

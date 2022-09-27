@@ -10,7 +10,6 @@ public class PageFactory {
                 return new SummaryPage(driver);
             case "Tools":
                 return new Tools(driver);
-
             default:
                 return null;
         }
