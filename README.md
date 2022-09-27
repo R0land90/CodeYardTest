@@ -1,7 +1,7 @@
 <h1 align="center">CodeYard test page</h1>
     <br />
     <br />
-    <a href="https://r0land90.github.io/CodeYardTest/"><strong>View Allure Report</strong></a>
+    <a href="https://r0land90.github.io/CodeYardTest/7/"><strong>View Allure Report</strong></a>
     <br />
     <br />
     <a href="https://trello.com/b/Zkm8yAOH/codeyardtesztfeladat"><strong>View Trello board</strong></a>
