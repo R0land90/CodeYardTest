@@ -1,0 +1,12 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"failed","Tue Sep 27 10:24:39 GMT 2022","Tue Sep 27 10:24:48 GMT 2022","8686","","Test01FormPage","","Test01FormPage","testFirstNameFieldMaxChar1","testFirstNameFieldMaxChar1()","""Keresztnév mező maximális karakter hossz ellenőrzése. 
+Maximálisan megengedett 32 karakter.
+Tesztelés 33 karakterrel."""
+"failed","Tue Sep 27 10:24:57 GMT 2022","Tue Sep 27 10:25:06 GMT 2022","9195","","Test01FormPage","","Test01FormPage","testPasswordFieldConfirmationDifferent","testPasswordFieldConfirmationDifferent()","Jelszó mező és a jelszó megerősítése mező különböző jelszavak elfogadásának validációja"
+"passed","Tue Sep 27 10:24:37 GMT 2022","Tue Sep 27 10:24:39 GMT 2022","2321","","Test01FormPage","","Test01FormPage","testLastNameFieldEmpty","testLastNameFieldEmpty()","Üres Vezetéknév mező validálása"
+"failed","Tue Sep 27 10:25:06 GMT 2022","Tue Sep 27 10:25:09 GMT 2022","3422","","Test01FormPage","","Test01FormPage","testPasswordFieldMasking","testPasswordFieldMasking()","Jelszó mező és a jelszó megerősítése mező maszkolása csillag karaktertípusokkal"
+"failed","Tue Sep 27 10:24:48 GMT 2022","Tue Sep 27 10:24:57 GMT 2022","9176","","Test01FormPage","","Test01FormPage","testEmailFieldMissingAt","testEmailFieldMissingAt()","Az email címben @ szimbólum validációja"
+"failed","Tue Sep 27 10:24:20 GMT 2022","Tue Sep 27 10:24:36 GMT 2022","16302","","Test01FormPage","","Test01FormPage","testBirthDateFutureMan","testBirthDateFutureMan()","Születési Dátum mező
+ez itt egy jövőmenő."
+"failed","Tue Sep 27 10:25:18 GMT 2022","Tue Sep 27 10:25:27 GMT 2022","9073","","Test01FormPage","","Test01FormPage","testEmailFieldMissingDot","testEmailFieldMissingDot()","Az email címben . karakter validációja"
+"failed","Tue Sep 27 10:25:09 GMT 2022","Tue Sep 27 10:25:18 GMT 2022","8543","","Test01FormPage","","Test01FormPage","testLastNameFieldNumber","testLastNameFieldNumber()","Vezetéknév mező szám típusú karakter elfogadásának ellenőrzése"
