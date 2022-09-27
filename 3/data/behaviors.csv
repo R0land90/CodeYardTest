@@ -1,0 +1,4 @@
+"Epic","Feature","Story","FAILED","BROKEN","PASSED","SKIPPED","UNKNOWN"
+"Last Name Field","Character Validation","EMPTY","0","1","0","0","0"
+"First Name Field","Character Long Validation","MAX CHARACTER +1","0","1","0","0","0"
+"Last Name Field","Character Validation","NUMBER","0","1","0","0","0"

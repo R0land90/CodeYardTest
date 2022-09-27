@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"broken","Tue Sep 27 07:26:24 GMT 2022","Tue Sep 27 07:26:24 GMT 2022","668","","Test01LastName","","Test01LastName","testLastNameFieldEmpty","testLastNameFieldEmpty()","Üres Vezetéknév mező validálása"
+"broken","Tue Sep 27 07:26:24 GMT 2022","Tue Sep 27 07:26:25 GMT 2022","286","","Test01LastName","","Test01LastName","testFirstNameFieldMaxChar1","testFirstNameFieldMaxChar1()","""Keresztnév mező maximális karakter hossz ellenőrzése. 
+Maximálisan megengedett 32 karakter.
+Tesztelés 33 karakterrel."""
+"broken","Tue Sep 27 07:26:25 GMT 2022","Tue Sep 27 07:26:25 GMT 2022","172","","Test01LastName","","Test01LastName","testLastNameFieldNumber","testLastNameFieldNumber()","Vezetéknév mező szám típusú karakter elfogadásának ellenőrzése"
