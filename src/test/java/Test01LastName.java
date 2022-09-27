@@ -136,7 +136,7 @@ public class Test01LastName extends Test00Base {
 
         Thread.sleep(1000);
 
-        ////Hibaüzenet megjelenésének ellenőrzése
+        //Hibaüzenet megjelenésének ellenőrzése
         if(driver.findElements(formPage.firstNameField).size()>0){
             Boolean result = tools.isCssPresent(driver.findElement(formPage.firstNameField),"caret-color");
             Boolean expectedErrorMessage = true;
@@ -148,4 +148,59 @@ public class Test01LastName extends Test00Base {
 
         takeScreenShot("Az oldal továbblépett és elfogadta a specifikáltnál hosszabb karakterláncot");
     }
+
+    @Test
+    @Epic("Email Field")
+    @Feature("Email address validation")
+    @Story("Missing @ char")
+    @Description("Az email címben @ szimbólum validációja")
+    @Severity(SeverityLevel.CRITICAL)
+    @Tag("CYTC_21")
+    @Issue("BUG_10")
+    public void testEmailFieldMissingAt() throws IOException, InterruptedException {
+            //PAGEFACTORY
+        FormPage formPage = (FormPage) PageFactory.Create("FormPage", driver);
+        Tools tools = (Tools) PageFactory.Create("Tools", driver);
+
+            //TEST
+
+        String testData = "tesztemail.hu";
+
+        driver.findElement(formPage.emailField).sendKeys(testData);
+
+        By[] elements ={
+                formPage.lastNameField,
+                formPage.firstNameField,
+                formPage.userNameField,
+                formPage.passwordField,
+                formPage.passwordRepeatField,
+                formPage.birthPlaceField};
+        String[] dataSelector = {
+                "lName",
+                "fName",
+                "uName",
+                "password",
+                "passwordRep",
+                "birthPlace"};
+
+        tools.dataFiller(elements,dataSelector);
+        driver.findElement(formPage.nextButton).click();
+
+            //ASSERT
+
+        Thread.sleep(1000);
+
+        //Hibaüzenet megjelenésének ellenőrzése
+        if(driver.findElements(formPage.emailField).size()>0){
+            Boolean result = tools.isCssPresent(driver.findElement(formPage.emailField),"caret-color");
+            Boolean expectedErrorMessage = true;
+            Assertions.assertEquals(expectedErrorMessage,result);
+        }
+        //Oldal továbblépésének ellenőrzése
+        String expectedURL = "https://test.codeyard.eu/";
+        Assertions.assertEquals(expectedURL,driver.getCurrentUrl());
+
+        takeScreenShot("Az oldal továbblépett és elfogadta a hibát tartalmazó tesztadatot");
+    }
+
 }
