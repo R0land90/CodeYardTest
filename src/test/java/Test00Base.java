@@ -1,9 +1,13 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Allure;
 import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.io.ByteArrayInputStream;
 import java.util.concurrent.TimeUnit;
 
 public class Test00Base {
@@ -23,9 +27,16 @@ public class Test00Base {
         options.addArguments("--window-size=1920,1080");
         //options.addArguments("start-maximized");
         driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         //driver.manage().window().maximize();
         driver.get("https://test.codeyard.eu/");
+    }
+
+
+    //METHODS
+
+    public void takeScreenShot(String text){
+        Allure.addAttachment(text, new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
     }
 
 }

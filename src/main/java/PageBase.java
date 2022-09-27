@@ -6,4 +6,9 @@ public class PageBase {
 
     //Constructor
     public PageBase(WebDriver drv) {driver=drv;}
+
+    // File locations
+
+    public static String fillerDataFilePath = "fillerData.json";
+
 }

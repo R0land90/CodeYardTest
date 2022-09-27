@@ -1,0 +1,9 @@
+{
+  "fName" : "John Ronald Reuel",
+  "lName" : "Tolkien",
+  "email" : "jrr@tolkien.hu",
+  "uName" : "RingKiller1",
+  "password": "SamLoveMe",
+  "passwordRep": "SamLoveMe",
+  "birthPlace" : "The Shire"
+}
