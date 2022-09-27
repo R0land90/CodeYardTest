@@ -1,0 +1,10 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"failed","Tue Sep 27 08:48:00 GMT 2022","Tue Sep 27 08:48:03 GMT 2022","3318","","Test01FormPage","","Test01FormPage","testPasswordFieldMasking","testPasswordFieldMasking()","Jelszó mező és a jelszó megerősítése mező maszkolása csillag karaktertípusokkal"
+"failed","Tue Sep 27 08:47:32 GMT 2022","Tue Sep 27 08:47:41 GMT 2022","9398","","Test01FormPage","","Test01FormPage","testFirstNameFieldMaxChar1","testFirstNameFieldMaxChar1()","""Keresztnév mező maximális karakter hossz ellenőrzése. 
+Maximálisan megengedett 32 karakter.
+Tesztelés 33 karakterrel."""
+"passed","Tue Sep 27 08:47:29 GMT 2022","Tue Sep 27 08:47:32 GMT 2022","2720","","Test01FormPage","","Test01FormPage","testLastNameFieldEmpty","testLastNameFieldEmpty()","Üres Vezetéknév mező validálása"
+"failed","Tue Sep 27 08:47:41 GMT 2022","Tue Sep 27 08:47:50 GMT 2022","9136","","Test01FormPage","","Test01FormPage","testEmailFieldMissingAt","testEmailFieldMissingAt()","Az email címben @ szimbólum validációja"
+"failed","Tue Sep 27 08:48:03 GMT 2022","Tue Sep 27 08:48:12 GMT 2022","8727","","Test01FormPage","","Test01FormPage","testLastNameFieldNumber","testLastNameFieldNumber()","Vezetéknév mező szám típusú karakter elfogadásának ellenőrzése"
+"failed","Tue Sep 27 08:47:50 GMT 2022","Tue Sep 27 08:48:00 GMT 2022","9193","","Test01FormPage","","Test01FormPage","testPasswordFieldConfirmationDifferent","testPasswordFieldConfirmationDifferent()","Jelszó mező és a jelszó megerősítése mező különböző jelszavak elfogadásának validációja"
+"failed","Tue Sep 27 08:48:12 GMT 2022","Tue Sep 27 08:48:21 GMT 2022","9103","","Test01FormPage","","Test01FormPage","testEmailFieldMissingDot","testEmailFieldMissingDot()","Az email címben . karakter validációja"
